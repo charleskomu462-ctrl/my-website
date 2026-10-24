@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charles Alarm - Evil Edition 😂</title>
+<style>
+body{font-family:system-ui;background:#0f0f1a;color:white;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}
+.card{background:#1e1e2f;border-radius:20px;padding:25px;width:100%;max-width:400px;box-shadow:0 10px 30px rgba(0,0,0,.5);text-align:center;border:2px solid #4f46e5}
+h1{margin:0;color:#a78bfa}
+input[type=time]{font-size:24px;padding:10px;border-radius:10px;border:none;margin:15px 0;width:80%}
+button{padding:12px 20px;border-radius:10px;border:none;font-weight:bold;cursor:pointer;margin:5px;font-size:16px}
+#set{background:#4f46e5;color:white;width:100%}
+#ringing{display:none;position:fixed;inset:0;background:#000;z-index:99;justify-content:center;align-items:center;flex-direction:column;padding:20px;text-align:center}
+#ringing.active{display:flex}
+.big{font-size:48px;animation:shake .2s infinite}
+@keyframes shake{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.question{background:#1e1e2f;padding:15px;border-radius:12px;margin:10px 0;width:100%;max-width:380px}
+.question input{width:90%;padding:8px;border-radius:8px;border:none;margin-top:8px}
+.locked{background:#333;color:#888}
+.unlocked{background:#22c55e;color:white}
+.paybox{background:#312e81;padding:12px;border-radius:10px;margin:15px 0;border:1px dashed #a78bfa}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>🔔 CHARLES ALARM</h1>
+<p>Set time to trap your friend 😂</p>
+<input type="time" id="timeInput">
+<button id="set" onclick="setAlarm()">Set Alarm 💣</button>
+<p id="status" style="color:#a78bfa;margin-top:15px"></p>
+<div style="margin-top:20px;font-size:12px;color:#888">Made by Charles Mathew | 0143939584</div>
+</div>
+
+<div id="ringing">
+<div class="big">⏰ RINGING!!! ⏰</div>
+<h2 style="color:#f87171">WAKE UP!!! SOLVE OR PAY!</h2>
+
+<div class="paybox">
+💸 <b>Shortcut Bribe:</b><br>
+Pay <b>100 bob</b> to<br>
+<b>Charles Mathew<br>0143939584</b><br>
+Then call him to unlock 😂
+</div>
+
+<div id="questions"></div>
+
+<button id="stopBtn" class="locked" onclick="tryStop()">Stop Ringing (Locked 🔒)</button>
+<p style="font-size:12px;color:#888;margin-top:10px">Stop button won't work until you solve 5/5 calculus!</p>
+</div>
+
+<script>
+let alarmTime=null, interval=null, audioCtx=null, oscillator=null;
+const qs=[
+{q:"1) Find dy/dx of y = x²",a:["2x","2*x"]},
+{q:"2) ∫ 2x dx = ?",a:["x^2","x^2+c","x²"]},
+{q:"3) dy/dx of sin(x) = ?",a:["cosx","cos(x)"]},
+{q:"4) ∫ 3x² dx = ?",a:["x^3","x^3+c","x³"]},
+{q:"5) dy/dx of e^x = ?",a:["e^x","ex","e**x"]},
+];
+let solved=[false,false,false,false,false];
+
+function setAlarm(){
+ const t=document.getElementById('timeInput').value;
+ if(!t){alert('Set time first Gee!');return;}
+ alarmTime=t;
+ document.getElementById('status').innerText='Alarm set for '+t+' - Keep this page open!';
+ if(interval) clearInterval(interval);
+ interval=setInterval(check,1000);
+}
+function check(){
+ const now=new Date();
+ const cur=now.toTimeString().slice(0,5);
+ if(cur===alarmTime){trigger();}
+}
+function trigger(){
+ clearInterval(interval);
+ document.getElementById('ringing').classList.add('active');
+ renderQs();
+ startSound();
+ if(navigator.vibrate) navigator.vibrate([1000,200,1000,200,1000]);
+}
+function renderQs(){
+ const c=document.getElementById('questions');
+ c.innerHTML='';
+ qs.forEach((item,i)=>{
+  c.innerHTML+=`<div class="question"><b>${item.q}</b><br><input id="q${i}" placeholder="your answer" oninput="checkQ(${i})"><span id="s${i}"> ❌</span></div>`;
+ });
+}
+function checkQ(i){
+ const val=document.getElementById('q'+i).value.toLowerCase().replace(/\s+/g,'').replace('+c','').replace('c','');
+ const correct=qs[i].a.some(ans=> val.includes(ans.toLowerCase().replace(/\s+/g,'')));
+ if(correct){
+  solved[i]=true;
+  document.getElementById('s'+i).innerText=' ✅';
+ }else{
+  solved[i]=false;
+  document.getElementById('s'+i).innerText=' ❌';
+ }
+ updateStop();
+}
+function updateStop(){
+ const all=solved.every(v=>v);
+ const btn=document.getElementById('stopBtn');
+ if(all){
+  btn.className='unlocked';
+  btn.innerText='Stop Ringing (Unlocked! ✅)';
+ }else{
+  const count=solved.filter(v=>v).length;
+  btn.innerText=`Stop Ringing (Locked 🔒 ${count}/5 solved)`;
+ }
+}
+function tryStop(){
+ if(!solved.every(v=>v)){
+  alert('Hahaha! Stop button is locked Gee! 😂\n\nSolve 5 calculus OR pay 100 bob to Charles 0143939584!');
+  if(navigator.vibrate) navigator.vibrate([500,100,500]);
+  return;
+ }
+ stopSound();
+ document.getElementById('ringing').classList.remove('active');
+ alert('Finally! You are free! 😂 Go pay Charles his 100 bob anyway for stress!');
+ location.reload();
+}
+function startSound(){
+ try{
+  audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  oscillator=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+  oscillator.type='square';
+  oscillator.frequency.value=880;
+  oscillator.connect(gain);
+  gain.connect(audioCtx.destination);
+  oscillator.start();
+  setInterval(()=>{if(oscillator) oscillator.frequency.value = oscillator.frequency.value==880? 440 : 880;},300);
+ }catch(e){}
+}
+function stopSound(){try{if(oscillator) oscillator.stop();}catch(e){}}
+</script>
+</body>
+</html>
