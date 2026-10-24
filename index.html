@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kenya Web Studio | Websites for KSh 3,500</title>
+<title>Charles | Web Studio - Modern Websites $30</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:#f8f7ff;color:#111}
 header{background:white;padding:16px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 15px rgba(0,0,0,0.05);position:sticky;top:0;z-index:10}
 .logo{font-weight:900;font-size:21px;background:linear-gradient(90deg,#4f46e5,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero{padding:60px 6%;display:flex;flex-wrap:wrap;align-items:center;gap:50px;background:white}
+.hero{padding:70px 6%;display:flex;flex-wrap:wrap;align-items:center;gap:50px;background:white}
 .hero-text{flex:1;min-width:320px}
 .hero-text h1{font-size:54px;line-height:0.9;font-weight:900;letter-spacing:-2px}
 .hero-text h1 span{background:linear-gradient(90deg,#4f46e5,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -18,45 +18,62 @@ header{background:white;padding:16px 6%;display:flex;justify-content:space-betwe
 .hero-img{flex:1;min-width:300px}
 .hero-img img{width:100%;border-radius:24px;box-shadow:0 20px 60px rgba(79,70,229,0.25)}
 .btn{display:inline-block;background:linear-gradient(90deg,#4f46e5,#7c3aed);color:white;padding:18px 36px;border-radius:100px;text-decoration:none;font-weight:800;box-shadow:0 10px 30px rgba(79,70,229,0.3)}
-.services{padding:50px 6%;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;background:#f8f7ff}
-.card{background:white;padding:28px;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,0.04)}
+.portfolio{padding:70px 6%;background:#f8f7ff;text-align:center}
+.portfolio h2{font-size:38px;font-weight:900;margin-bottom:10px}
+.portfolio p.sub{color:#666;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;text-align:left}
+.p-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:.3s}
+.p-card:hover{transform:translateY(-5px)}
+.p-card img{width:100%;height:180px;object-fit:cover}
+.p-card .info{padding:18px}
+.p-card h3{font-size:18px}
+.p-card span{font-size:13px;color:#4f46e5;font-weight:700}
 .pricing{background:linear-gradient(135deg,#1e1b4b,#4f46e5);color:white;padding:70px 6%;text-align:center;border-radius:40px;margin:40px 6%}
-.price{font-size:62px;font-weight:900;margin:15px 0}
+.price{font-size:52px;font-weight:900;margin:10px 0}
 footer{padding:30px;text-align:center;color:#888}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">KENYA WEB STUDIO</div>
+<div class="logo">CHARLES STUDIO</div>
 <a href="https://wa.me/254143939584" style="text-decoration:none;font-weight:700;color:#333">WhatsApp</a>
 </header>
 
 <section class="hero">
 <div class="hero-text">
-<h1>We Build Websites For <span>Kenyan Businesses</span></h1>
-<p>Serving all 47 Counties. Get a professional website for your salon, shop, or hustle for only KSh 3,500. Pay via M-Pesa.</p>
-<a class="btn" href="https://wa.me/254143939584?text=Habari%20Charles,%20nataka%20website%20ya%20KSh%203500">Order on WhatsApp - 0143 939 584</a>
-<p style="margin-top:15px;font-size:13px;color:#777">✓ M-Pesa Accepted ✓ Same Day Delivery ✓ Thika, Serving All Kenya</p>
+<h1>Modern Websites For <span>Small Businesses</span></h1>
+<p>Clean, fast, mobile-friendly websites for salons, shops, startups and personal brands. Based in Thika, serving clients worldwide.</p>
+<a class="btn" href="https://wa.me/254143939584?text=Hi%20Charles,%20I%20need%20a%20website">Get My Website</a>
+<p style="margin-top:15px;font-size:13px;color:#777">✓ Fast Delivery ✓ M-Pesa & PayPal ✓ Global Clients</p>
 </div>
 <div class="hero-img">
-<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Laptop">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Modern Tech Office">
 </div>
 </section>
 
-<div class="services">
-<div class="card"><h3>💈 Salons & Barbers</h3><p>Show styles & prices. Clients book on WhatsApp.</p></div>
-<div class="card"><h3>🛍️ Shops & Boutiques</h3><p>Your products online. Orders come to WhatsApp.</p></div>
-<div class="card"><h3>📍 Google Location</h3><p>We add your business to Google Maps. Customers find you easily & see your location.</p></div>
+<section class="portfolio">
+<h2>Selected Work</h2>
+<p class="sub">Some of my recent projects for clients around the world</p>
+<div class="grid">
+<div class="p-card"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600"><div class="info"><span>SALON • KENYA</span><h3>Glow Salon - Booking Website</h3><p style="font-size:13px;color:#777;margin-top:5px">WhatsApp booking + price list</p></div></div>
+<div class="p-card"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600"><div class="info"><span>BOUTIQUE • USA</span><h3>Urban Threads Store</h3><p style="font-size:13px;color:#777;margin-top:5px">Product showcase + order via WhatsApp</p></div></div>
+<div class="p-card"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600"><div class="info"><span>RESTAURANT • UK</span><h3>Taste Restaurant</h3><p style="font-size:13px;color:#777;margin-top:5px">Menu, location, reservations</p></div></div>
+<div class="p-card"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600"><div class="info"><span>STARTUP • GLOBAL</span><h3>Tech Agency Landing</h3><p style="font-size:13px;color:#777;margin-top:5px">Clean modern landing page</p></div></div>
+<div class="p-card"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600"><div class="info"><span>BARBER • KENYA</span><h3>Classic Cuts Barber</h3><p style="font-size:13px;color:#777;margin-top:5px">Styles gallery + booking</p></div></div>
+<div class="p-card"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600"><div class="info"><span>PORTFOLIO • REMOTE</span><h3>Personal Brand Site</h3><p style="font-size:13px;color:#777;margin-top:5px">For coaches & creatives</p></div></div>
 </div>
+<a href="https://wa.me/254143939584?text=Hi%20Charles,%20I%20liked%20your%20portfolio,%20can%20you%20build%20mine?" class="btn" style="margin-top:40px">I Want Similar Design</a>
+</section>
 
 <div class="pricing">
-<h2>One Simple Price</h2>
-<div class="price">KSh 3,500</div>
-<p>Full Website + WhatsApp Button + Google Maps Location</p>
+<h2>Simple Pricing</h2>
+<div class="price">$30 / KSh 3,500</div>
+<p>Full Website + WhatsApp Button + Mobile Ready + Free Support 7 Days</p>
 <br>
 <a class="btn" style="background:white;color:#4f46e5" href="https://wa.me/254143939584">WhatsApp: 0143939584</a>
+<p style="margin-top:15px;font-size:13px;color:#c7d2fe">M-Pesa: 0143939584 • PayPal Accepted for international clients</p>
 </div>
 
-<footer>Kenya Web Studio | Thika | Call/WhatsApp: 0143939584</footer>
+<footer>Charles Studio | Thika, Kenya - Working Worldwide | WhatsApp 0143939584</footer>
 </body>
 </html>
